@@ -54,3 +54,7 @@ Options:
 # Support us
 
 Please feel free to nominate our METASPAN validators directly, or select our pool #50 to get the same rewards
+
+# References & Kudos
+
+- we are dependent on the ONE-T service from turboflakes.io. Please also support them where possible
