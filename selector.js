@@ -20,13 +20,13 @@ import { shortStash, parseIdentity, slog } from './utils.js'
 program
   .version('1.0.0', '-v, --version')
   .usage('[OPTIONS]...')
-  .option('-c, --chain <chain>', 'kusama | polkadot, defaults to kusama', 'kusama')
-  .option('-d, --data', 'Data directory, defaults to ./data', './data')
+  .option('-c, --chain <chain>', 'kusama | polkadot', 'kusama')
+  .option('-d, --data <data>', 'Data directory', './data')
   .option('-e, --endpoint <provider>', 'Endpoint provider, defaults to parity', 'local') // 'parity'
   .option('-l, --loglevel <level>', 'Logging level, defaults to info', 'info') // 'parity'
-  .option('-p, --prefix', 'File prefix, defaults to onet_', 'onet_')
-  .option('-t, --top <number>', '# vals in file to compare, default 50', '50')
-  .option('-m, --maxcommission', 'Maximim validator commission permitted, default 10', '10')
+  .option('-p, --prefix <prefix>', 'File prefix', 'onet_')
+  .option('-t, --top <number>', '# vals in file to compare', '50')
+  .option('-m, --maxcommission <percent>', 'Maximim validator commission permitted', '10')
   .parse(process.argv)
 
 const options = program.opts()

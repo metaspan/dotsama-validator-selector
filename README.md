@@ -27,6 +27,11 @@ edit the `endpoints.js` file
 - Calculate unique nominators, and determine validators from `targets`
 - Update known Validators - see https://github.com/turboflakes/one-t/issues/3
 
+## TODO
+
+- check balances of nominators to oversubscibed, if our balance is bigger we can push them off
+- get better data from ONE-T upstream service - https://github.com/turboflakes/one-t/issues/3
+
 # Selector
 
 ```bash
