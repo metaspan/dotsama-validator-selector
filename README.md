@@ -12,7 +12,7 @@ MONGO_PORT='12345'
 MONGO_USERID='your_mongo_user'
 MONGO_PASSWD='your_mongo_pass'
 MONGO_DATABASE='your_mongo_db'
-CHUNKSIZE=256
+BATCH_SIZE=256
 ```
 
 edit the `endpoints.js` file

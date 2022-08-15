@@ -4,18 +4,25 @@ import { ApiPromise, WsProvider } from '@polkadot/api'
 import { hexToString } from '@polkadot/util'
 import fs from 'fs'
 import { MongoClient } from 'mongodb'
-import { getMongoUrl, shortStash, parseIdentity, slog } from './utils.js'
+import {
+  MONGO_CONNECTION_URL,
+  shortStash,
+  parseIdentity, slog, DATA_DIR
+} from './utils.js'
 
 const chains = ['kusama', 'polkadot']
 const MONGO_COLLECTION = 'w3f_nominator'
-const MONGO_CONNECTION_URL = getMongoUrl()
+// const MONGO_CONNECTION_URL = getMongoUrl()
 
 import { endpoints } from './endpoints.js'
+const endpoint = 'parity'
 
 async function getAllNominators (chain) {
-  if (fs.existsSync(`${chain}-nominators.json`)) {
-    slog(`serving nominators from ${chain}-nominators.json`)
-    return JSON.parse(fs.readFileSync(`${chain}-nominators.json`, 'utf-8'))
+  if (fs.existsSync(`${DATA_DIR}/${chain}-nominators.json`)) {
+    slog(`serving nominators from ${DATA_DIR}/${chain}-nominators.json`)
+    return JSON.parse(fs.readFileSync(`${DATA_DIR}/${chain}-nominators.json`, 'utf-8'))
+  } else {
+    console.warn('No validators found?')
   }
 }
 
@@ -81,7 +88,7 @@ var parents = [];
     
     for(var c = 0; c < chains.length; c++) {
       const chain = chains[c]
-      const provider = new WsProvider(endpoints[chain]['local'])
+      const provider = new WsProvider(endpoints[chain][endpoint])
       const api = await ApiPromise.create({ provider: provider })
 
       slog(`getting data for ${chain}:`)

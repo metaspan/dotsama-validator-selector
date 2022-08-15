@@ -5,13 +5,14 @@ import { hexToString } from '@polkadot/util'
 import { MongoClient } from 'mongodb'
 
 import { endpoints } from './endpoints.js'
-import { getMongoUrl, shortStash, parseIdentity, slog } from './utils.js'
+const endpoint = 'parity'
+import { MONGO_CONNECTION_URL, shortStash, parseIdentity, slog } from './utils.js'
 
 const chains = [
   'kusama',
   // 'polkadot' // no pools yet...!
 ]
-const MONGO_CONNECTION_URL = getMongoUrl()
+// const MONGO_CONNECTION_URL = getMongoUrl()
 const MONGO_COLLECTION = 'w3f_pool'
 
 async function getAllPools (api, chain) {
@@ -99,11 +100,8 @@ var pools = [];
     
     for(var c = 0; c < chains.length; c++) {
       const chain = chains[c]
-      const provider = new WsProvider(endpoints[chain]['local'])
+      const provider = new WsProvider(endpoints[chain][endpoint])
       const api = await ApiPromise.create({ provider: provider })
-      // slog('getting 1kv candidates')
-      // candidates = await getCandidates(chain)
-      // slog(`... found ${candidates.length}`)
 
       // var maptest = await api.query.staking.bonded.entries('F3opxRbN5ZavB4LTn2aKWL2iuHJifMsqn8uLnR2HQ1yQs7t')
       // maptest.forEach(([key, m]) => console.log(m).toString())

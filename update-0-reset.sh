@@ -1,5 +1,5 @@
 #!/bin/bash
 
-mv kusama-*.json archive/.
-mv polkadot-*.json archive/.
-mv known*.json archive/.
+mv ./data/kusama-*.json archive/.
+mv ./data/polkadot-*.json archive/.
+mv ./data/known*.json archive/.
